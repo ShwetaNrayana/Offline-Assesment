@@ -22,9 +22,16 @@ public class AssesmentService {
 	
 public static String getCategorieByCategoryId(String reqGson) {
 		
-		List<Map<String,Object>> dataMap = DBOperation.getCategorieByCategoryId(reqGson);
+		Gson gson = new Gson();
+		Map<String,Object> map = gson.fromJson(reqGson, Map.class);
+		String reqCategory = map.get("categoryCode").toString();
 		
-		return "";
-		
+		List<Map<String,Object>> dataMap = DBOperation.getCategorieByCategoryId(reqCategory);
+		if(!dataMap.isEmpty()) {
+			String response = gson.toJson(dataMap);
+			return response;
+			}else {
+				return "0";
+			}
 	}
 }

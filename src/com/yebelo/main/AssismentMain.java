@@ -1,7 +1,10 @@
 package com.yebelo.main;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
+import com.google.gson.Gson;
 import com.yebelo.service.AssesmentService;
 
 public class AssismentMain {
@@ -30,8 +33,12 @@ public class AssismentMain {
 	}
 
 	public static void getCategorieByCategoryId(String catId) {
-		
-		String response2 = AssesmentService.getCategorieByCategoryId(catId);
+		Map<String, Object> reqObj = new HashMap<>();
+		reqObj.put("categoryCode", catId);
+		Gson reqGson = new Gson();
+		String request = reqGson.toJson(reqObj);
+		System.out.println("request header " + request);
+		String response2 = AssesmentService.getCategorieByCategoryId(request);
 		System.out.println("reponse data " + response2);
 	}
 
