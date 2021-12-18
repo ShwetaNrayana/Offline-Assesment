@@ -16,5 +16,15 @@ public class AssesmentService {
 	return response;
 	}else {
 		return "0";
-	}}
+	}
+	
+	}
+	
+public static String getCategorieByCategoryId(String reqGson) {
+		
+		List<Map<String,Object>> dataMap = DBOperation.getCategorieByCategoryId(reqGson);
+		
+		return "";
+		
+	}
 }
