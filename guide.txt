@@ -1,0 +1,8 @@
+Step 1: Run AssismentMain Class as a Java Application it will give us option to select option 1 and option 2.
+Step 2: After run if we will enter 1 on console and press the enter keyword it will give the response data of all category in the form of JSON response.
+Step 3: Again we will do the Step 1 which will re run the application and will get the options again. Now choose the option 2.
+Step 4: After run if we will enter 2 on console and press the enter keyword it will ask for category Id.
+Step 5: Based on the category Id will get the response in JSON object on console.
+Step 6: If the category Id is available then we will get a valid JASON response otherwise will get the zero as response.
+
+Note: Re run the application again to start over.

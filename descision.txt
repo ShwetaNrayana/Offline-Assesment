@@ -1,0 +1,31 @@
+
+Create Database table in Oracle DB using following script.
+
+CREATE TABLE  "CATEGORY" 
+   (	"ID" NUMBER NOT NULL ENABLE, 
+	"CATEGORY_CODE" VARCHAR2(4000), 
+	"OLD_VALUE" VARCHAR2(4000), 
+	"NEW_VALUE" VARCHAR2(4000), 
+	 CONSTRAINT "CATEGORY_PK" PRIMARY KEY ("ID") ENABLE
+   )
+/
+
+CREATE OR REPLACE TRIGGER  "BI_CATEGORY" 
+  before insert on "CATEGORY"               
+  for each row  
+begin   
+    select "CAT_SEQ".nextval into :NEW.ID from dual; 
+end; 
+
+/
+ALTER TRIGGER  "BI_CATEGORY" ENABLE
+/
+
+Please go through the deign-architectural.png file under the root directory
+Following is the data flow description inside the application ref. design-architectural.png:
+	>Here Main method act as Client which interact with Service/Business Layer and show the result on console.
+	>From service layer the request will go to the DB Layer and here the JDBC connector will help to interact with the Database to perform the required operations.
+	>Database having the category table (which already created by using the above script) when we perform any operation using JDBC then data will get resultSet object in DB Layer. 
+	>At DB layer we are converting resultSet into List of Map of rows.
+	>At service layer converting List of Map into JSON object and vice versa to get the request or to create the response, with the help of Google GSON API.
+	
